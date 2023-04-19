@@ -89,22 +89,22 @@ namespace TaxiHub
 
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.OrdersForm);
         }
 
         private void OrdersToolStripButton_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.OrdersForm);
         }
 
         private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.ClientsForm);
         }
 
         private void ClientsToolStripButton_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.ClientsForm);
         }
 
         private void CarsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,12 +119,12 @@ namespace TaxiHub
 
         private void FeedBackToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.FeedBackForm);
         }
 
         private void FeedBackToolStripButton_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.Form);
         }
     }
 }

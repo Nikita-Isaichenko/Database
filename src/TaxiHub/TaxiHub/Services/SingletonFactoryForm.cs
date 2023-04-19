@@ -23,6 +23,21 @@ namespace TaxiHub.Services
         private static DriversForm _driversForm;
 
         /// <summary>
+        /// Форма с данными о клиентах.
+        /// </summary>
+        private static ClientsForm _clientsForm;
+
+        /// <summary>
+        /// Форма с данными о отзывах.
+        /// </summary>
+        private static FeedBackForm _feedBackForm;
+
+        /// <summary>
+        /// Форма с данными о заказах.
+        /// </summary>
+        private static OrdersForm _ordersForm;
+
+        /// <summary>
         /// Возвращает форму с данными о машинах.
         /// </summary>
         public static CarsForm CarsForm
@@ -45,6 +60,45 @@ namespace TaxiHub.Services
                 return (_driversForm is null || _driversForm.IsDisposed)
                     ? _driversForm = new DriversForm()
                     : _driversForm;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает форму с данными о клиентах.
+        /// </summary>
+        public static ClientsForm ClientsForm
+        {
+            get
+            {
+                return (_clientsForm is null || _clientsForm.IsDisposed)
+                    ? _clientsForm = new ClientsForm()
+                    : _clientsForm;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает форму с данными о отзывах.
+        /// </summary>
+        public static FeedBackForm FeedBackForm
+        {
+            get
+            {
+                return (_feedBackForm is null || _feedBackForm.IsDisposed)
+                    ? _feedBackForm = new FeedBackForm()
+                    : _feedBackForm;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает форму с данными о заказах.
+        /// </summary>
+        public static OrdersForm OrdersForm
+        {
+            get
+            {
+                return (_ordersForm is null || _ordersForm.IsDisposed)
+                    ? _ordersForm = new OrdersForm()
+                    : _ordersForm;
             }
         }
     }
