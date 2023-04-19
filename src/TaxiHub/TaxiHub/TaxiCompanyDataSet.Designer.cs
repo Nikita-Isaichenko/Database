@@ -1170,6 +1170,8 @@ namespace TaxiHub {
             
             private global::System.Data.DataColumn columnMiddleName;
             
+            private global::System.Data.DataColumn columnSex;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DriversDataTable() {
@@ -1261,6 +1263,14 @@ namespace TaxiHub {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SexColumn {
+                get {
+                    return this.columnSex;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1296,7 +1306,7 @@ namespace TaxiHub {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DriversRow AddDriversRow(long DriversLicenseNumber, string Passport, byte Experience, long PhoneNumber, string Name, string SecondName, string MiddleName) {
+            public DriversRow AddDriversRow(long DriversLicenseNumber, string Passport, byte Experience, long PhoneNumber, string Name, string SecondName, string MiddleName, string Sex) {
                 DriversRow rowDriversRow = ((DriversRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         DriversLicenseNumber,
@@ -1305,7 +1315,8 @@ namespace TaxiHub {
                         PhoneNumber,
                         Name,
                         SecondName,
-                        MiddleName};
+                        MiddleName,
+                        Sex};
                 rowDriversRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDriversRow);
                 return rowDriversRow;
@@ -1342,6 +1353,7 @@ namespace TaxiHub {
                 this.columnName = base.Columns["Name"];
                 this.columnSecondName = base.Columns["SecondName"];
                 this.columnMiddleName = base.Columns["MiddleName"];
+                this.columnSex = base.Columns["Sex"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1361,6 +1373,8 @@ namespace TaxiHub {
                 base.Columns.Add(this.columnSecondName);
                 this.columnMiddleName = new global::System.Data.DataColumn("MiddleName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMiddleName);
+                this.columnSex = new global::System.Data.DataColumn("Sex", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSex);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnDriversLicenseNumber}, true));
                 this.columnDriversLicenseNumber.AllowDBNull = false;
@@ -1373,6 +1387,8 @@ namespace TaxiHub {
                 this.columnSecondName.AllowDBNull = false;
                 this.columnSecondName.MaxLength = 20;
                 this.columnMiddleName.MaxLength = 20;
+                this.columnSex.AllowDBNull = false;
+                this.columnSex.MaxLength = 9;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2546,6 +2562,17 @@ namespace TaxiHub {
                 }
                 set {
                     this[this.tableDrivers.MiddleNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Sex {
+                get {
+                    return ((string)(this[this.tableDrivers.SexColumn]));
+                }
+                set {
+                    this[this.tableDrivers.SexColumn] = value;
                 }
             }
             
@@ -4014,10 +4041,11 @@ SELECT Id, PhoneNumber, FirstName, SecondName, MiddleName, Balance FROM Clients 
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("SecondName", "SecondName");
             tableMapping.ColumnMappings.Add("MiddleName", "MiddleName");
+            tableMapping.ColumnMappings.Add("Sex", "Sex");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Drivers] WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Drivers] WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)) AND ([Sex] = @Original_Sex))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Passport", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Passport", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4028,10 +4056,11 @@ SELECT Id, PhoneNumber, FirstName, SecondName, MiddleName, Balance FROM Clients 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SecondName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SecondName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MiddleName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MiddleName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MiddleName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MiddleName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Drivers] ([DriversLicenseNumber], [Passport], [Experience], [PhoneNumber], [Name], [SecondName], [MiddleName]) VALUES (@DriversLicenseNumber, @Passport, @Experience, @PhoneNumber, @Name, @SecondName, @MiddleName);
-SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName FROM Drivers WHERE (DriversLicenseNumber = @DriversLicenseNumber)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Drivers] ([DriversLicenseNumber], [Passport], [Experience], [PhoneNumber], [Name], [SecondName], [MiddleName], [Sex]) VALUES (@DriversLicenseNumber, @Passport, @Experience, @PhoneNumber, @Name, @SecondName, @MiddleName, @Sex);
+SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName, Sex FROM Drivers WHERE (DriversLicenseNumber = @DriversLicenseNumber)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Passport", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Passport", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4040,10 +4069,11 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SecondName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SecondName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MiddleName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MiddleName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Drivers] SET [DriversLicenseNumber] = @DriversLicenseNumber, [Passport] = @Passport, [Experience] = @Experience, [PhoneNumber] = @PhoneNumber, [Name] = @Name, [SecondName] = @SecondName, [MiddleName] = @MiddleName WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)));
-SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName FROM Drivers WHERE (DriversLicenseNumber = @DriversLicenseNumber)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Drivers] SET [DriversLicenseNumber] = @DriversLicenseNumber, [Passport] = @Passport, [Experience] = @Experience, [PhoneNumber] = @PhoneNumber, [Name] = @Name, [SecondName] = @SecondName, [MiddleName] = @MiddleName, [Sex] = @Sex WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)) AND ([Sex] = @Original_Sex));
+SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName, Sex FROM Drivers WHERE (DriversLicenseNumber = @DriversLicenseNumber)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Passport", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Passport", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4052,6 +4082,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SecondName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SecondName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MiddleName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MiddleName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Passport", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Passport", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Experience", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experience", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -4061,6 +4092,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SecondName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SecondName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MiddleName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MiddleName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MiddleName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MiddleName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4077,7 +4109,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName," +
-                " MiddleName FROM dbo.Drivers";
+                " MiddleName, Sex FROM Drivers";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4138,7 +4170,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_DriversLicenseNumber, string Original_Passport, global::System.Nullable<byte> Original_Experience, long Original_PhoneNumber, string Original_Name, string Original_SecondName, string Original_MiddleName) {
+        public virtual int Delete(long Original_DriversLicenseNumber, string Original_Passport, global::System.Nullable<byte> Original_Experience, long Original_PhoneNumber, string Original_Name, string Original_SecondName, string Original_MiddleName, string Original_Sex) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_DriversLicenseNumber));
             if ((Original_Passport == null)) {
                 throw new global::System.ArgumentNullException("Original_Passport");
@@ -4175,6 +4207,12 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_MiddleName));
             }
+            if ((Original_Sex == null)) {
+                throw new global::System.ArgumentNullException("Original_Sex");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_Sex));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4195,7 +4233,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long DriversLicenseNumber, string Passport, global::System.Nullable<byte> Experience, long PhoneNumber, string Name, string SecondName, string MiddleName) {
+        public virtual int Insert(long DriversLicenseNumber, string Passport, global::System.Nullable<byte> Experience, long PhoneNumber, string Name, string SecondName, string MiddleName, string Sex) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(DriversLicenseNumber));
             if ((Passport == null)) {
                 throw new global::System.ArgumentNullException("Passport");
@@ -4228,6 +4266,12 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(MiddleName));
             }
+            if ((Sex == null)) {
+                throw new global::System.ArgumentNullException("Sex");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Sex));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4248,7 +4292,23 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(long DriversLicenseNumber, string Passport, global::System.Nullable<byte> Experience, long PhoneNumber, string Name, string SecondName, string MiddleName, long Original_DriversLicenseNumber, string Original_Passport, global::System.Nullable<byte> Original_Experience, long Original_PhoneNumber, string Original_Name, string Original_SecondName, string Original_MiddleName) {
+        public virtual int Update(
+                    long DriversLicenseNumber, 
+                    string Passport, 
+                    global::System.Nullable<byte> Experience, 
+                    long PhoneNumber, 
+                    string Name, 
+                    string SecondName, 
+                    string MiddleName, 
+                    string Sex, 
+                    long Original_DriversLicenseNumber, 
+                    string Original_Passport, 
+                    global::System.Nullable<byte> Original_Experience, 
+                    long Original_PhoneNumber, 
+                    string Original_Name, 
+                    string Original_SecondName, 
+                    string Original_MiddleName, 
+                    string Original_Sex) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(DriversLicenseNumber));
             if ((Passport == null)) {
                 throw new global::System.ArgumentNullException("Passport");
@@ -4281,41 +4341,53 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(MiddleName));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_DriversLicenseNumber));
+            if ((Sex == null)) {
+                throw new global::System.ArgumentNullException("Sex");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Sex));
+            }
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_DriversLicenseNumber));
             if ((Original_Passport == null)) {
                 throw new global::System.ArgumentNullException("Original_Passport");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Passport));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Passport));
             }
             if ((Original_Experience.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((byte)(Original_Experience.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((byte)(Original_Experience.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(Original_PhoneNumber));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(Original_PhoneNumber));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Name));
             }
             if ((Original_SecondName == null)) {
                 throw new global::System.ArgumentNullException("Original_SecondName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_SecondName));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_SecondName));
             }
             if ((Original_MiddleName == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_MiddleName));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_MiddleName));
+            }
+            if ((Original_Sex == null)) {
+                throw new global::System.ArgumentNullException("Original_Sex");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Sex));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4337,8 +4409,8 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Passport, global::System.Nullable<byte> Experience, long PhoneNumber, string Name, string SecondName, string MiddleName, long Original_DriversLicenseNumber, string Original_Passport, global::System.Nullable<byte> Original_Experience, long Original_PhoneNumber, string Original_Name, string Original_SecondName, string Original_MiddleName) {
-            return this.Update(Original_DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName, Original_DriversLicenseNumber, Original_Passport, Original_Experience, Original_PhoneNumber, Original_Name, Original_SecondName, Original_MiddleName);
+        public virtual int Update(string Passport, global::System.Nullable<byte> Experience, long PhoneNumber, string Name, string SecondName, string MiddleName, string Sex, long Original_DriversLicenseNumber, string Original_Passport, global::System.Nullable<byte> Original_Experience, long Original_PhoneNumber, string Original_Name, string Original_SecondName, string Original_MiddleName, string Original_Sex) {
+            return this.Update(Original_DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName, Sex, Original_DriversLicenseNumber, Original_Passport, Original_Experience, Original_PhoneNumber, Original_Name, Original_SecondName, Original_MiddleName, Original_Sex);
         }
     }
     

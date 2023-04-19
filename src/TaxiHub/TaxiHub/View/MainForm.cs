@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaxiHub.Properties;
+using TaxiHub.Services;
 using TaxiHub.View;
 
 namespace TaxiHub
@@ -18,6 +19,12 @@ namespace TaxiHub
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void ShowForm(Form form)
+        {
+            form.Show();
+            form.Activate();
         }
 
         private void AboutText(string about)
@@ -72,12 +79,12 @@ namespace TaxiHub
 
         private void DriversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.DriversForm);
         }
 
         private void DriversToolStripButton_Click(object sender, EventArgs e)
         {
-
+            ShowForm(SingletonFactoryForm.DriversForm);
         }
 
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,16 +109,12 @@ namespace TaxiHub
 
         private void CarsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CarsForm carsForm = new CarsForm();
-
-            carsForm.ShowDialog();
+            ShowForm(SingletonFactoryForm.CarsForm);
         }
 
         private void CarsToolStripButton_Click(object sender, EventArgs e)
         {
-            CarsForm carsForm = new CarsForm();
-
-            carsForm.ShowDialog();
+            ShowForm(SingletonFactoryForm.CarsForm);
         }
 
         private void FeedBackToolStripMenuItem_Click(object sender, EventArgs e)

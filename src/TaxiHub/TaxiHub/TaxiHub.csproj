@@ -58,6 +58,18 @@
     <Compile Include="View\CarsForm.Designer.cs">
       <DependentUpon>CarsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClientsForm.Designer.cs">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DriversForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DriversForm.Designer.cs">
+      <DependentUpon>DriversForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,12 @@
     </Compile>
     <EmbeddedResource Include="View\CarsForm.resx">
       <DependentUpon>CarsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ClientsForm.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DriversForm.resx">
+      <DependentUpon>DriversForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

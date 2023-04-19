@@ -18,6 +18,11 @@ namespace TaxiHub.Services
         private static CarsForm _carsForm;
 
         /// <summary>
+        /// Форма с данными о водителях.
+        /// </summary>
+        private static DriversForm _driversForm;
+
+        /// <summary>
         /// Возвращает форму с данными о машинах.
         /// </summary>
         public static CarsForm CarsForm
@@ -25,8 +30,21 @@ namespace TaxiHub.Services
             get
             {
                 return (_carsForm is null || _carsForm.IsDisposed)
-                    ? new CarsForm()
+                    ? _carsForm = new CarsForm()
                     : _carsForm;                 
+            }
+        }
+
+        /// <summary>
+        /// Возвращает форму с данными о водителях.
+        /// </summary>
+        public static DriversForm DriversForm
+        {
+            get
+            {
+                return (_driversForm is null || _driversForm.IsDisposed)
+                    ? _driversForm = new DriversForm()
+                    : _driversForm;
             }
         }
     }
