@@ -32,7 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DriversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,9 +43,9 @@
             this.FeedBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainToolStrip = new System.Windows.Forms.ToolStrip();
             this.ExitContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainToolStrip = new System.Windows.Forms.ToolStrip();
             this.ExitToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.AboutToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.DriversToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -51,8 +53,8 @@
             this.ClientsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.CarsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FeedBackToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связныеСправочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заказыКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.MainContextMenuStrip.SuspendLayout();
             this.MainToolStrip.SuspendLayout();
@@ -64,7 +66,8 @@
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.HelpToolStripMenuItem,
-            this.ReferencesToolStripMenuItem});
+            this.ReferencesToolStripMenuItem,
+            this.связныеСправочникиToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(685, 24);
@@ -79,6 +82,15 @@
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.FileToolStripMenuItem.Text = "Файл";
             // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_exit_603120;
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.ExitToolStripMenuItem.Text = "Выход";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // HelpToolStripMenuItem
             // 
             this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -86,6 +98,15 @@
             this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
             this.HelpToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.HelpToolStripMenuItem.Text = "Справка";
+            // 
+            // AboutToolStripMenuItem
+            // 
+            this.AboutToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.information;
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            this.AboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.AboutToolStripMenuItem.Text = "О программе";
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // ReferencesToolStripMenuItem
             // 
@@ -155,6 +176,22 @@
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
+            // ExitContextToolStripMenuItem
+            // 
+            this.ExitContextToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_exit_603120;
+            this.ExitContextToolStripMenuItem.Name = "ExitContextToolStripMenuItem";
+            this.ExitContextToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.ExitContextToolStripMenuItem.Text = "Выход";
+            this.ExitContextToolStripMenuItem.Click += new System.EventHandler(this.ExitContextToolStripMenuItem_Click);
+            // 
+            // AboutContextToolStripMenuItem
+            // 
+            this.AboutContextToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.information;
+            this.AboutContextToolStripMenuItem.Name = "AboutContextToolStripMenuItem";
+            this.AboutContextToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.AboutContextToolStripMenuItem.Text = "О программе";
+            this.AboutContextToolStripMenuItem.Click += new System.EventHandler(this.AboutContextToolStripMenuItem_Click);
+            // 
             // MainToolStrip
             // 
             this.MainToolStrip.ImageScalingSize = new System.Drawing.Size(18, 18);
@@ -171,22 +208,6 @@
             this.MainToolStrip.Size = new System.Drawing.Size(685, 25);
             this.MainToolStrip.TabIndex = 2;
             this.MainToolStrip.Text = "toolStrip1";
-            // 
-            // ExitContextToolStripMenuItem
-            // 
-            this.ExitContextToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_exit_603120;
-            this.ExitContextToolStripMenuItem.Name = "ExitContextToolStripMenuItem";
-            this.ExitContextToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.ExitContextToolStripMenuItem.Text = "Выход";
-            this.ExitContextToolStripMenuItem.Click += new System.EventHandler(this.ExitContextToolStripMenuItem_Click);
-            // 
-            // AboutContextToolStripMenuItem
-            // 
-            this.AboutContextToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.information;
-            this.AboutContextToolStripMenuItem.Name = "AboutContextToolStripMenuItem";
-            this.AboutContextToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.AboutContextToolStripMenuItem.Text = "О программе";
-            this.AboutContextToolStripMenuItem.Click += new System.EventHandler(this.AboutContextToolStripMenuItem_Click);
             // 
             // ExitToolStripButton
             // 
@@ -260,23 +281,20 @@
             this.FeedBackToolStripButton.Text = "toolStripButton4";
             this.FeedBackToolStripButton.Click += new System.EventHandler(this.FeedBackToolStripButton_Click);
             // 
-            // ExitToolStripMenuItem
+            // связныеСправочникиToolStripMenuItem
             // 
-            this.ExitToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_exit_603120;
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.ExitToolStripMenuItem.Text = "Выход";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.связныеСправочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.заказыКлиентовToolStripMenuItem});
+            this.связныеСправочникиToolStripMenuItem.Name = "связныеСправочникиToolStripMenuItem";
+            this.связныеСправочникиToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.связныеСправочникиToolStripMenuItem.Text = "Связные справочники";
             // 
-            // AboutToolStripMenuItem
+            // заказыКлиентовToolStripMenuItem
             // 
-            this.AboutToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.information;
-            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.AboutToolStripMenuItem.Text = "О программе";
-            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            this.заказыКлиентовToolStripMenuItem.Name = "заказыКлиентовToolStripMenuItem";
+            this.заказыКлиентовToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заказыКлиентовToolStripMenuItem.Text = "Заказы клиентов";
+            this.заказыКлиентовToolStripMenuItem.Click += new System.EventHandler(this.заказыКлиентовToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -330,6 +348,8 @@
         private System.Windows.Forms.ToolStripButton ClientsToolStripButton;
         private System.Windows.Forms.ToolStripButton FeedBackToolStripButton;
         private System.Windows.Forms.ToolStripButton CarsToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem связныеСправочникиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem заказыКлиентовToolStripMenuItem;
     }
 }
 

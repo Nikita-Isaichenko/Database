@@ -124,7 +124,12 @@ namespace TaxiHub
 
         private void FeedBackToolStripButton_Click(object sender, EventArgs e)
         {
-            ShowForm(SingletonFactoryForm.Form);
+            ShowForm(SingletonFactoryForm.FeedBackForm);
+        }
+
+        private void заказыКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(SingletonFactoryForm.OrdersClientsForm);
         }
     }
 }
