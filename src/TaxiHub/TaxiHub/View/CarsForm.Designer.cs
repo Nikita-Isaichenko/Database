@@ -43,11 +43,22 @@
             this.carsTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.CarsTableAdapter();
             this.tableAdapterManager = new TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager();
             this.carsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.carsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.PropertyCarsBindingSourceToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBoxFind = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
             this.carNumberTextBox = new System.Windows.Forms.TextBox();
             this.colorTextBox = new System.Windows.Forms.TextBox();
             this.seatsNumberTextBox = new System.Windows.Forms.TextBox();
@@ -56,13 +67,7 @@
             this.lastDateTechnicalInspectionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.driversTextBox = new System.Windows.Forms.TextBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.carsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.FilterCheckBox = new System.Windows.Forms.CheckBox();
             carNumberLabel = new System.Windows.Forms.Label();
             colorLabel = new System.Windows.Forms.Label();
             seatsNumberLabel = new System.Windows.Forms.Label();
@@ -199,7 +204,11 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.carsBindingNavigatorSaveItem});
+            this.carsBindingNavigatorSaveItem,
+            this.toolStripSeparator1,
+            this.PropertyCarsBindingSourceToolStripComboBox,
+            this.toolStripTextBoxFind,
+            this.toolStripButtonFind});
             this.carsBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.carsBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.carsBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -207,130 +216,9 @@
             this.carsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.carsBindingNavigator.Name = "carsBindingNavigator";
             this.carsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.carsBindingNavigator.Size = new System.Drawing.Size(396, 25);
+            this.carsBindingNavigator.Size = new System.Drawing.Size(611, 25);
             this.carsBindingNavigator.TabIndex = 0;
             this.carsBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
-            this.bindingNavigatorCountItem.Text = "для {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // carNumberTextBox
-            // 
-            this.carNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.carNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarNumber", true));
-            this.carNumberTextBox.Location = new System.Drawing.Point(178, 43);
-            this.carNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 5, 3);
-            this.carNumberTextBox.Name = "carNumberTextBox";
-            this.carNumberTextBox.Size = new System.Drawing.Size(201, 20);
-            this.carNumberTextBox.TabIndex = 2;
-            // 
-            // colorTextBox
-            // 
-            this.colorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "Color", true));
-            this.colorTextBox.Location = new System.Drawing.Point(178, 69);
-            this.colorTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.colorTextBox.Name = "colorTextBox";
-            this.colorTextBox.Size = new System.Drawing.Size(201, 20);
-            this.colorTextBox.TabIndex = 4;
-            // 
-            // seatsNumberTextBox
-            // 
-            this.seatsNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.seatsNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "SeatsNumber", true));
-            this.seatsNumberTextBox.Location = new System.Drawing.Point(178, 95);
-            this.seatsNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.seatsNumberTextBox.Name = "seatsNumberTextBox";
-            this.seatsNumberTextBox.Size = new System.Drawing.Size(201, 20);
-            this.seatsNumberTextBox.TabIndex = 6;
-            // 
-            // releaseYearTextBox
-            // 
-            this.releaseYearTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.releaseYearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "ReleaseYear", true));
-            this.releaseYearTextBox.Location = new System.Drawing.Point(178, 121);
-            this.releaseYearTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.releaseYearTextBox.Name = "releaseYearTextBox";
-            this.releaseYearTextBox.Size = new System.Drawing.Size(201, 20);
-            this.releaseYearTextBox.TabIndex = 8;
-            // 
-            // carBrandTextBox
-            // 
-            this.carBrandTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.carBrandTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarBrand", true));
-            this.carBrandTextBox.Location = new System.Drawing.Point(178, 147);
-            this.carBrandTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.carBrandTextBox.Name = "carBrandTextBox";
-            this.carBrandTextBox.Size = new System.Drawing.Size(201, 20);
-            this.carBrandTextBox.TabIndex = 10;
-            // 
-            // lastDateTechnicalInspectionDateTimePicker
-            // 
-            this.lastDateTechnicalInspectionDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lastDateTechnicalInspectionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.carsBindingSource, "LastDateTechnicalInspection", true));
-            this.lastDateTechnicalInspectionDateTimePicker.Location = new System.Drawing.Point(178, 199);
-            this.lastDateTechnicalInspectionDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.lastDateTechnicalInspectionDateTimePicker.Name = "lastDateTechnicalInspectionDateTimePicker";
-            this.lastDateTechnicalInspectionDateTimePicker.Size = new System.Drawing.Size(201, 20);
-            this.lastDateTechnicalInspectionDateTimePicker.TabIndex = 14;
-            // 
-            // driversTextBox
-            // 
-            this.driversTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.driversTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "Drivers", true));
-            this.driversTextBox.Location = new System.Drawing.Point(178, 225);
-            this.driversTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.driversTextBox.Name = "driversTextBox";
-            this.driversTextBox.Size = new System.Drawing.Size(201, 20);
-            this.driversTextBox.TabIndex = 16;
-            // 
-            // statusComboBox
-            // 
-            this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "Status", true));
-            this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Items.AddRange(new object[] {
-            "Свободна",
-            "Занята"});
-            this.statusComboBox.Location = new System.Drawing.Point(178, 173);
-            this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(121, 21);
-            this.statusComboBox.TabIndex = 18;
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -340,6 +228,13 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
+            this.bindingNavigatorCountItem.Text = "для {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -368,6 +263,26 @@
             this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // bindingNavigatorMoveNextItem
             // 
             this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -386,6 +301,11 @@
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // carsBindingNavigatorSaveItem
             // 
             this.carsBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -393,14 +313,145 @@
             this.carsBindingNavigatorSaveItem.Name = "carsBindingNavigatorSaveItem";
             this.carsBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.carsBindingNavigatorSaveItem.Text = "Сохранить данные";
-            this.carsBindingNavigatorSaveItem.Click += new System.EventHandler(this.carsBindingNavigatorSaveItem_Click_2);
+            this.carsBindingNavigatorSaveItem.Click += new System.EventHandler(this.carsBindingNavigatorSaveItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // PropertyCarsBindingSourceToolStripComboBox
+            // 
+            this.PropertyCarsBindingSourceToolStripComboBox.AutoSize = false;
+            this.PropertyCarsBindingSourceToolStripComboBox.Name = "PropertyCarsBindingSourceToolStripComboBox";
+            this.PropertyCarsBindingSourceToolStripComboBox.Size = new System.Drawing.Size(80, 23);
+            // 
+            // toolStripTextBoxFind
+            // 
+            this.toolStripTextBoxFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxFind.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxFind.Name = "toolStripTextBoxFind";
+            this.toolStripTextBoxFind.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripButtonFind
+            // 
+            this.toolStripButtonFind.Image = global::TaxiHub.Properties.Resources.free_icon_magnifier_2397983;
+            this.toolStripButtonFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFind.Name = "toolStripButtonFind";
+            this.toolStripButtonFind.Size = new System.Drawing.Size(62, 22);
+            this.toolStripButtonFind.Text = "Поиск";
+            this.toolStripButtonFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButtonFind.Click += new System.EventHandler(this.toolStripButtonFind_Click);
+            // 
+            // carNumberTextBox
+            // 
+            this.carNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.carNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarNumber", true));
+            this.carNumberTextBox.Location = new System.Drawing.Point(178, 43);
+            this.carNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 5, 3);
+            this.carNumberTextBox.Name = "carNumberTextBox";
+            this.carNumberTextBox.Size = new System.Drawing.Size(205, 20);
+            this.carNumberTextBox.TabIndex = 2;
+            // 
+            // colorTextBox
+            // 
+            this.colorTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "Color", true));
+            this.colorTextBox.Location = new System.Drawing.Point(178, 69);
+            this.colorTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.colorTextBox.Name = "colorTextBox";
+            this.colorTextBox.Size = new System.Drawing.Size(205, 20);
+            this.colorTextBox.TabIndex = 4;
+            // 
+            // seatsNumberTextBox
+            // 
+            this.seatsNumberTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.seatsNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "SeatsNumber", true));
+            this.seatsNumberTextBox.Location = new System.Drawing.Point(178, 95);
+            this.seatsNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.seatsNumberTextBox.Name = "seatsNumberTextBox";
+            this.seatsNumberTextBox.Size = new System.Drawing.Size(205, 20);
+            this.seatsNumberTextBox.TabIndex = 6;
+            // 
+            // releaseYearTextBox
+            // 
+            this.releaseYearTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.releaseYearTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "ReleaseYear", true));
+            this.releaseYearTextBox.Location = new System.Drawing.Point(178, 121);
+            this.releaseYearTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.releaseYearTextBox.Name = "releaseYearTextBox";
+            this.releaseYearTextBox.Size = new System.Drawing.Size(145, 20);
+            this.releaseYearTextBox.TabIndex = 8;
+            // 
+            // carBrandTextBox
+            // 
+            this.carBrandTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.carBrandTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "CarBrand", true));
+            this.carBrandTextBox.Location = new System.Drawing.Point(178, 147);
+            this.carBrandTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.carBrandTextBox.Name = "carBrandTextBox";
+            this.carBrandTextBox.Size = new System.Drawing.Size(205, 20);
+            this.carBrandTextBox.TabIndex = 10;
+            // 
+            // lastDateTechnicalInspectionDateTimePicker
+            // 
+            this.lastDateTechnicalInspectionDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lastDateTechnicalInspectionDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.carsBindingSource, "LastDateTechnicalInspection", true));
+            this.lastDateTechnicalInspectionDateTimePicker.Location = new System.Drawing.Point(178, 199);
+            this.lastDateTechnicalInspectionDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.lastDateTechnicalInspectionDateTimePicker.Name = "lastDateTechnicalInspectionDateTimePicker";
+            this.lastDateTechnicalInspectionDateTimePicker.Size = new System.Drawing.Size(205, 20);
+            this.lastDateTechnicalInspectionDateTimePicker.TabIndex = 14;
+            // 
+            // driversTextBox
+            // 
+            this.driversTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.driversTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "Drivers", true));
+            this.driversTextBox.Location = new System.Drawing.Point(178, 225);
+            this.driversTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.driversTextBox.Name = "driversTextBox";
+            this.driversTextBox.Size = new System.Drawing.Size(316, 20);
+            this.driversTextBox.TabIndex = 16;
+            // 
+            // statusComboBox
+            // 
+            this.statusComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "Status", true));
+            this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "Свободна",
+            "Занята"});
+            this.statusComboBox.Location = new System.Drawing.Point(178, 173);
+            this.statusComboBox.Name = "statusComboBox";
+            this.statusComboBox.Size = new System.Drawing.Size(145, 21);
+            this.statusComboBox.TabIndex = 18;
+            // 
+            // FilterCheckBox
+            // 
+            this.FilterCheckBox.AutoSize = true;
+            this.FilterCheckBox.Location = new System.Drawing.Point(535, 4);
+            this.FilterCheckBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.FilterCheckBox.Name = "FilterCheckBox";
+            this.FilterCheckBox.Size = new System.Drawing.Size(66, 17);
+            this.FilterCheckBox.TabIndex = 19;
+            this.FilterCheckBox.Text = "Фильтр";
+            this.FilterCheckBox.UseVisualStyleBackColor = true;
+            this.FilterCheckBox.CheckedChanged += new System.EventHandler(this.FilterCheckBox_CheckedChanged);
             // 
             // CarsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(396, 265);
+            this.ClientSize = new System.Drawing.Size(611, 265);
+            this.Controls.Add(this.FilterCheckBox);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(carNumberLabel);
             this.Controls.Add(this.carNumberTextBox);
@@ -460,5 +511,10 @@
         private System.Windows.Forms.DateTimePicker lastDateTechnicalInspectionDateTimePicker;
         private System.Windows.Forms.TextBox driversTextBox;
         private System.Windows.Forms.ComboBox statusComboBox;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFind;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFind;
+        private System.Windows.Forms.CheckBox FilterCheckBox;
+        private System.Windows.Forms.ToolStripComboBox PropertyCarsBindingSourceToolStripComboBox;
     }
 }

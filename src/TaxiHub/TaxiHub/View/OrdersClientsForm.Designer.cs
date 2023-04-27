@@ -341,7 +341,7 @@
             this.clientsBindingNavigatorSaveItem.Name = "clientsBindingNavigatorSaveItem";
             this.clientsBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.clientsBindingNavigatorSaveItem.Text = "Сохранить данные";
-            this.clientsBindingNavigatorSaveItem.Click += new System.EventHandler(this.clientsBindingNavigatorSaveItem_Click_1);
+            this.clientsBindingNavigatorSaveItem.Click += new System.EventHandler(this.clientsBindingNavigatorSaveItem_Click);
             // 
             // idTextBox
             // 

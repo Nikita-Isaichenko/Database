@@ -193,5 +193,11 @@
   <ItemGroup>
     <None Include="Resources\free-icon-order-5220625.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-mobile-5283327.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-magnifier-2397983.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

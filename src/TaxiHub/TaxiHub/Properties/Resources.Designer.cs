@@ -93,6 +93,26 @@ namespace TaxiHub.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap free_icon_magnifier_2397983 {
+            get {
+                object obj = ResourceManager.GetObject("free_icon_magnifier_2397983", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_mobile_5283327 {
+            get {
+                object obj = ResourceManager.GetObject("free_icon_mobile_5283327", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap free_icon_order_5220625 {
             get {
                 object obj = ResourceManager.GetObject("free_icon_order_5220625", resourceCulture);

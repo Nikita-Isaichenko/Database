@@ -15,25 +15,11 @@ namespace TaxiHub.View
         public CarsForm()
         {
             InitializeComponent();
+            
+            
         }
 
         private void carsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.carsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
-
-        }
-
-        private void carsBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.carsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
-
-        }
-
-        private void carsBindingNavigatorSaveItem_Click_2(object sender, EventArgs e)
         {
             this.Validate();
             this.carsBindingSource.EndEdit();
@@ -46,6 +32,108 @@ namespace TaxiHub.View
             // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Cars". При необходимости она может быть перемещена или удалена.
             this.carsTableAdapter.Fill(this.taxiCompanyDataSet.Cars);
 
+            foreach (var item in taxiCompanyDataSet.Cars.Columns)
+            {
+                PropertyCarsBindingSourceToolStripComboBox
+                    .Items.Add(item.ToString());
+            }
+        }
+
+        private void toolStripButtonFind_Click(object sender, EventArgs e)
+        {
+            if (toolStripTextBoxFind.Text == "")
+            {
+                MessageBox.Show("Вы ничего не задали",
+                                "Внимание",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                return;
+            }
+
+            var selectedItem = PropertyCarsBindingSourceToolStripComboBox.SelectedItem;
+
+            if (selectedItem is null)
+            {
+                MessageBox.Show("Вы не задали свойство, по которому проводить поиск",
+                                "Внимание",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                return;
+            }
+
+            int indexPos;
+
+            try
+            {
+                indexPos =
+                carsBindingSource.Find(selectedItem.ToString(), toolStripTextBoxFind.Text);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ошибка поиска \n" + err.Message);
+                return;
+            }
+
+            if (indexPos > -1)
+            {
+                carsBindingSource.Position = indexPos;
+            }
+            else
+            {
+                MessageBox.Show("Таких сотрудников нет",
+                                "Внимание",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                carsBindingSource.Position = 0;
+            }
+        }
+
+        private void FilterCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            var selectedItem = PropertyCarsBindingSourceToolStripComboBox.SelectedItem;
+
+            if (FilterCheckBox.Checked)
+            {
+                if (toolStripTextBoxFind.Text == "")
+                {
+                    MessageBox.Show("Вы ничего не задали",
+                                    "Внимание",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                }
+                else if (selectedItem is null)
+                {
+                        MessageBox.Show("Вы не задали свойство, по которому проводить поиск",
+                                        "Внимание",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);                        
+                }
+                else
+                {
+                    try
+                    {
+                        carsBindingSource.Filter =
+                         selectedItem.ToString() + "='" + toolStripTextBoxFind.Text + "'";
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("Ошибка фильтрации \n" +
+                        err.Message);
+                    }
+                }
+            }
+            else
+            {
+                carsBindingSource.Filter = "";
+            }
+
+            if (carsBindingSource.Count == 0)
+            {
+                MessageBox.Show("Нет таких");
+                carsBindingSource.Filter = "";
+                FilterCheckBox.Checked = false;
+            }
         }
     }
 }

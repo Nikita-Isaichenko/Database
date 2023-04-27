@@ -41,6 +41,8 @@
             this.ClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CarsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FeedBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.связныеСправочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrdersClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,8 +55,8 @@
             this.ClientsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.CarsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.FeedBackToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.связныеСправочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заказыКлиентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.OrdersClientsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.MenuStrip.SuspendLayout();
             this.MainContextMenuStrip.SuspendLayout();
             this.MainToolStrip.SuspendLayout();
@@ -124,7 +126,7 @@
             // 
             this.DriversToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_taxi_driver_1189447;
             this.DriversToolStripMenuItem.Name = "DriversToolStripMenuItem";
-            this.DriversToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DriversToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.DriversToolStripMenuItem.Text = "Водители";
             this.DriversToolStripMenuItem.Click += new System.EventHandler(this.DriversToolStripMenuItem_Click);
             // 
@@ -132,7 +134,7 @@
             // 
             this.OrdersToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_order_5220625;
             this.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem";
-            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.OrdersToolStripMenuItem.Text = "Заказы";
             this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
             // 
@@ -140,7 +142,7 @@
             // 
             this.ClientsToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_passenger_1611682;
             this.ClientsToolStripMenuItem.Name = "ClientsToolStripMenuItem";
-            this.ClientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ClientsToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.ClientsToolStripMenuItem.Text = "Клиенты";
             this.ClientsToolStripMenuItem.Click += new System.EventHandler(this.ClientsToolStripMenuItem_Click);
             // 
@@ -148,7 +150,7 @@
             // 
             this.CarsToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.taxi;
             this.CarsToolStripMenuItem.Name = "CarsToolStripMenuItem";
-            this.CarsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CarsToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.CarsToolStripMenuItem.Text = "Машины";
             this.CarsToolStripMenuItem.Click += new System.EventHandler(this.CarsToolStripMenuItem_Click);
             // 
@@ -156,9 +158,25 @@
             // 
             this.FeedBackToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_review_8292169;
             this.FeedBackToolStripMenuItem.Name = "FeedBackToolStripMenuItem";
-            this.FeedBackToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.FeedBackToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.FeedBackToolStripMenuItem.Text = "Отзывы";
             this.FeedBackToolStripMenuItem.Click += new System.EventHandler(this.FeedBackToolStripMenuItem_Click);
+            // 
+            // связныеСправочникиToolStripMenuItem
+            // 
+            this.связныеСправочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OrdersClientsToolStripMenuItem});
+            this.связныеСправочникиToolStripMenuItem.Name = "связныеСправочникиToolStripMenuItem";
+            this.связныеСправочникиToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.связныеСправочникиToolStripMenuItem.Text = "Связные справочники";
+            // 
+            // OrdersClientsToolStripMenuItem
+            // 
+            this.OrdersClientsToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_mobile_5283327;
+            this.OrdersClientsToolStripMenuItem.Name = "OrdersClientsToolStripMenuItem";
+            this.OrdersClientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OrdersClientsToolStripMenuItem.Text = "Заказы клиентов";
+            this.OrdersClientsToolStripMenuItem.Click += new System.EventHandler(this.OrdersClientsToolStripMenuItem_Click);
             // 
             // MainContextMenuStrip
             // 
@@ -202,7 +220,9 @@
             this.OrdersToolStripButton,
             this.ClientsToolStripButton,
             this.CarsToolStripButton,
-            this.FeedBackToolStripButton});
+            this.FeedBackToolStripButton,
+            this.toolStripSeparator1,
+            this.OrdersClientsToolStripButton});
             this.MainToolStrip.Location = new System.Drawing.Point(0, 24);
             this.MainToolStrip.Name = "MainToolStrip";
             this.MainToolStrip.Size = new System.Drawing.Size(685, 25);
@@ -249,6 +269,7 @@
             this.OrdersToolStripButton.Name = "OrdersToolStripButton";
             this.OrdersToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.OrdersToolStripButton.Text = "toolStripButton2";
+            this.OrdersToolStripButton.ToolTipText = "Заказы";
             this.OrdersToolStripButton.Click += new System.EventHandler(this.OrdersToolStripButton_Click);
             // 
             // ClientsToolStripButton
@@ -259,6 +280,7 @@
             this.ClientsToolStripButton.Name = "ClientsToolStripButton";
             this.ClientsToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.ClientsToolStripButton.Text = "toolStripButton3";
+            this.ClientsToolStripButton.ToolTipText = "Клиенты";
             this.ClientsToolStripButton.Click += new System.EventHandler(this.ClientsToolStripButton_Click);
             // 
             // CarsToolStripButton
@@ -269,6 +291,7 @@
             this.CarsToolStripButton.Name = "CarsToolStripButton";
             this.CarsToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.CarsToolStripButton.Text = "toolStripButton5";
+            this.CarsToolStripButton.ToolTipText = "Машины";
             this.CarsToolStripButton.Click += new System.EventHandler(this.CarsToolStripButton_Click);
             // 
             // FeedBackToolStripButton
@@ -279,22 +302,24 @@
             this.FeedBackToolStripButton.Name = "FeedBackToolStripButton";
             this.FeedBackToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.FeedBackToolStripButton.Text = "toolStripButton4";
+            this.FeedBackToolStripButton.ToolTipText = "Отзывы";
             this.FeedBackToolStripButton.Click += new System.EventHandler(this.FeedBackToolStripButton_Click);
             // 
-            // связныеСправочникиToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.связныеСправочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.заказыКлиентовToolStripMenuItem});
-            this.связныеСправочникиToolStripMenuItem.Name = "связныеСправочникиToolStripMenuItem";
-            this.связныеСправочникиToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
-            this.связныеСправочникиToolStripMenuItem.Text = "Связные справочники";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // заказыКлиентовToolStripMenuItem
+            // OrdersClientsToolStripButton
             // 
-            this.заказыКлиентовToolStripMenuItem.Name = "заказыКлиентовToolStripMenuItem";
-            this.заказыКлиентовToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.заказыКлиентовToolStripMenuItem.Text = "Заказы клиентов";
-            this.заказыКлиентовToolStripMenuItem.Click += new System.EventHandler(this.заказыКлиентовToolStripMenuItem_Click);
+            this.OrdersClientsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.OrdersClientsToolStripButton.Image = global::TaxiHub.Properties.Resources.free_icon_mobile_5283327;
+            this.OrdersClientsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OrdersClientsToolStripButton.Name = "OrdersClientsToolStripButton";
+            this.OrdersClientsToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.OrdersClientsToolStripButton.Text = "toolStripButton1";
+            this.OrdersClientsToolStripButton.ToolTipText = "Заказы клиентов";
+            this.OrdersClientsToolStripButton.Click += new System.EventHandler(this.OrdersClientsToolStripButton_Click);
             // 
             // MainForm
             // 
@@ -349,7 +374,9 @@
         private System.Windows.Forms.ToolStripButton FeedBackToolStripButton;
         private System.Windows.Forms.ToolStripButton CarsToolStripButton;
         private System.Windows.Forms.ToolStripMenuItem связныеСправочникиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заказыКлиентовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OrdersClientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton OrdersClientsToolStripButton;
     }
 }
 

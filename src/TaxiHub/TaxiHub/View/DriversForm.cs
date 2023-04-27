@@ -17,18 +17,24 @@ namespace TaxiHub.View
             InitializeComponent();
         }
 
+        private string GetSelectedFieldName()
+        {
+            return driversDataGridView.Columns[driversDataGridView.CurrentCell.ColumnIndex]
+                .DataPropertyName;
+        }
+
         private void driversBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.driversBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
-
+            Validate();
+            driversBindingSource.EndEdit();
+            tableAdapterManager.UpdateAll(taxiCompanyDataSet);
         }
 
         private void DriversForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Drivers". При необходимости она может быть перемещена или удалена.
-            this.driversTableAdapter.Fill(this.taxiCompanyDataSet.Drivers);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу
+            // "taxiCompanyDataSet.Drivers". При необходимости она может быть перемещена или удалена.
+            driversTableAdapter.Fill(taxiCompanyDataSet.Drivers);
 
         }
 
@@ -52,8 +58,85 @@ namespace TaxiHub.View
                 {
                     e.CellStyle.BackColor = Color.Pink;
                 }
+            }     
+        }
+
+        private void toolStripButtonFind_Click(object sender, EventArgs e)
+        {
+            if (toolStripTextBoxFind.Text == "")
+            {
+                MessageBox.Show("Вы ничего не задали",
+                                "Внимание",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                return;
             }
-            
-        }            
+
+            int indexPos;
+
+            try
+            {
+                indexPos =
+                driversBindingSource.Find(GetSelectedFieldName(),
+                                          toolStripTextBoxFind.Text);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ошибка поиска \n" + err.Message);
+                return;
+            }
+
+            if (indexPos > -1)
+            {
+                driversBindingSource.Position = indexPos;
+            }                
+            else
+            {
+                MessageBox.Show("Таких сотрудников нет",
+                                "Внимание",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                driversBindingSource.Position = 0;
+            }
+        }
+
+        private void FilterCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FilterCheckBox.Checked)
+            {
+                if (toolStripTextBoxFind.Text == "")
+                {
+                    MessageBox.Show("Вы ничего не задали",
+                                    "Внимание",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                }
+                else
+                {
+                    try
+                    {
+                       driversBindingSource.Filter =
+                        GetSelectedFieldName() + "='" + toolStripTextBoxFind.Text + "'";
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("Ошибка фильтрации \n" +
+                        err.Message);
+                    }
+                }                    
+            }
+            else
+            {
+                driversBindingSource.Filter = "";
+            }
+                
+            if (driversBindingSource.Count == 0)
+            {
+                MessageBox.Show("Нет таких");
+                driversBindingSource.Filter = "";
+                FilterCheckBox.Checked = false;
+            }
+        }
     }
 }

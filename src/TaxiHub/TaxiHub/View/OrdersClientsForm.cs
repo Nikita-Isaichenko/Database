@@ -19,10 +19,16 @@ namespace TaxiHub.View
 
         private void clientsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.clientsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
-
+            try
+            {
+                this.Validate();
+                this.clientsBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void OrdersClientsForm_Load(object sender, EventArgs e)
@@ -32,14 +38,6 @@ namespace TaxiHub.View
             // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Clients". При необходимости она может быть перемещена или удалена.
             this.clientsTableAdapter.Fill(this.taxiCompanyDataSet.Clients);
             taxiCompanyDataSet.Orders.Columns["Date"].DefaultValue = DateTime.Now;
-        }
-
-        private void clientsBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.clientsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
-
         }
 
         private void ordersBindingNavigatorSaveItem_Click(object sender, EventArgs e)

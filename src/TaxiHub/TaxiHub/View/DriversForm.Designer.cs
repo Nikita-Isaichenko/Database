@@ -47,6 +47,9 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.driversBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBoxFind = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
             this.driversDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +59,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnSex = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.FilterCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.driversBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.driversBindingNavigator)).BeginInit();
@@ -105,7 +109,10 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.driversBindingNavigatorSaveItem});
+            this.driversBindingNavigatorSaveItem,
+            this.toolStripSeparator1,
+            this.toolStripTextBoxFind,
+            this.toolStripButtonFind});
             this.driversBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.driversBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.driversBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -212,6 +219,29 @@
             this.driversBindingNavigatorSaveItem.Text = "Сохранить данные";
             this.driversBindingNavigatorSaveItem.Click += new System.EventHandler(this.driversBindingNavigatorSaveItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripTextBoxFind
+            // 
+            this.toolStripTextBoxFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxFind.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxFind.Name = "toolStripTextBoxFind";
+            this.toolStripTextBoxFind.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripButtonFind
+            // 
+            this.toolStripButtonFind.Image = global::TaxiHub.Properties.Resources.free_icon_magnifier_2397983;
+            this.toolStripButtonFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFind.Name = "toolStripButtonFind";
+            this.toolStripButtonFind.Size = new System.Drawing.Size(62, 22);
+            this.toolStripButtonFind.Text = "Поиск";
+            this.toolStripButtonFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButtonFind.Click += new System.EventHandler(this.toolStripButtonFind_Click);
+            // 
             // driversDataGridView
             // 
             this.driversDataGridView.AutoGenerateColumns = false;
@@ -288,11 +318,24 @@
             this.dataGridViewTextBoxColumnSex.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumnSex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // FilterCheckBox
+            // 
+            this.FilterCheckBox.AutoSize = true;
+            this.FilterCheckBox.Location = new System.Drawing.Point(456, 5);
+            this.FilterCheckBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.FilterCheckBox.Name = "FilterCheckBox";
+            this.FilterCheckBox.Size = new System.Drawing.Size(66, 17);
+            this.FilterCheckBox.TabIndex = 2;
+            this.FilterCheckBox.Text = "Фильтр";
+            this.FilterCheckBox.UseVisualStyleBackColor = true;
+            this.FilterCheckBox.CheckedChanged += new System.EventHandler(this.FilterCheckBox_CheckedChanged);
+            // 
             // DriversForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 384);
+            this.Controls.Add(this.FilterCheckBox);
             this.Controls.Add(this.driversDataGridView);
             this.Controls.Add(this.driversBindingNavigator);
             this.Name = "DriversForm";
@@ -337,5 +380,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumnSex;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFind;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFind;
+        private System.Windows.Forms.CheckBox FilterCheckBox;
     }
 }

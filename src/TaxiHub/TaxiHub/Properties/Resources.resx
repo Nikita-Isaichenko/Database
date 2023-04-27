@@ -121,7 +121,7 @@
   <data name="Exit_52" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAmRJREFUaEPdmj1LXEEYhTcIBtJoIVjEgARs7C0klV2SRrBImdLK+BvsrP0H+g9s
+        DgAACw4BQL7hQQAAAmRJREFUaEPdmj1LXEEYhTcIBtJoIVjEgARs7C0klV2SRrBImdLK+BvsrP0H+g9s
         1C6l+WiSJiA2QlKkSJGgEhE18Rw2A8Nhd+fjnbl7cx94cJGZ876zu9ydvTu9CB7CTfgeXsK/DcuarP0G
         shcTj+FnOKjQOPwE2VMWfDbatBgnF5X1SvFtNiiwDW7AZD5AP+QAzsGmYc1D6PfyDiZzAf2QcSzG8QT6
         vZzDZPwAOm7M/ZgDCmPuxxxQGHM/5oDCmPsxBxTG3I85oDDmfswBkTyAU/2HI7mDpn78yVkBkexC5u/A
@@ -140,6 +140,12 @@
   </data>
   <data name="free_icon_exit_603120" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-exit-603120.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free_icon_magnifier_2397983" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-magnifier-2397983.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free_icon_mobile_5283327" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-mobile-5283327.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="free_icon_order_5220625" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-order-5220625.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
