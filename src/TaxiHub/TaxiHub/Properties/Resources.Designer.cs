@@ -143,6 +143,16 @@ namespace TaxiHub.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap free_icon_select_all_8550949 {
+            get {
+                object obj = ResourceManager.GetObject("free_icon_select_all_8550949", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap free_icon_taxi_driver_1189447 {
             get {
                 object obj = ResourceManager.GetObject("free_icon_taxi_driver_1189447", resourceCulture);

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.taxiCompanyDataSet = new TaxiHub.TaxiCompanyDataSet();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -48,21 +49,22 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ordersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBoxFind = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
+            this.FilterCheckBox = new System.Windows.Forms.CheckBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostPerPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripTextBoxFind = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
-            this.FilterCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingNavigator)).BeginInit();
@@ -222,6 +224,29 @@
             this.ordersBindingNavigatorSaveItem.Text = "Сохранить данные";
             this.ordersBindingNavigatorSaveItem.Click += new System.EventHandler(this.ordersBindingNavigatorSaveItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripTextBoxFind
+            // 
+            this.toolStripTextBoxFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBoxFind.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxFind.Name = "toolStripTextBoxFind";
+            this.toolStripTextBoxFind.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripButtonFind
+            // 
+            this.toolStripButtonFind.Image = global::TaxiHub.Properties.Resources.free_icon_magnifier_2397983;
+            this.toolStripButtonFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFind.Name = "toolStripButtonFind";
+            this.toolStripButtonFind.Size = new System.Drawing.Size(62, 22);
+            this.toolStripButtonFind.Text = "Поиск";
+            this.toolStripButtonFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripButtonFind.Click += new System.EventHandler(this.toolStripButtonFind_Click);
+            // 
             // ordersDataGridView
             // 
             this.ordersDataGridView.AutoGenerateColumns = false;
@@ -232,6 +257,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
+            this.CostPerPerson,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
@@ -244,6 +270,18 @@
             this.ordersDataGridView.Name = "ordersDataGridView";
             this.ordersDataGridView.Size = new System.Drawing.Size(719, 301);
             this.ordersDataGridView.TabIndex = 1;
+            // 
+            // FilterCheckBox
+            // 
+            this.FilterCheckBox.AutoSize = true;
+            this.FilterCheckBox.Location = new System.Drawing.Point(452, 5);
+            this.FilterCheckBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.FilterCheckBox.Name = "FilterCheckBox";
+            this.FilterCheckBox.Size = new System.Drawing.Size(66, 17);
+            this.FilterCheckBox.TabIndex = 4;
+            this.FilterCheckBox.Text = "Фильтр";
+            this.FilterCheckBox.UseVisualStyleBackColor = true;
+            this.FilterCheckBox.CheckedChanged += new System.EventHandler(this.FilterCheckBox_CheckedChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -261,9 +299,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Cost";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn3.HeaderText = "Cost";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
@@ -272,6 +310,16 @@
             this.dataGridViewTextBoxColumn4.DataPropertyName = "PassengersNumber";
             this.dataGridViewTextBoxColumn4.HeaderText = "PassengersNumber";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // CostPerPerson
+            // 
+            this.CostPerPerson.DataPropertyName = "CostPerPerson";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.CostPerPerson.DefaultCellStyle = dataGridViewCellStyle2;
+            this.CostPerPerson.HeaderText = "CostPerPerson";
+            this.CostPerPerson.Name = "CostPerPerson";
+            this.CostPerPerson.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -313,41 +361,6 @@
             this.dataGridViewTextBoxColumn10.DataPropertyName = "DeparturePlace";
             this.dataGridViewTextBoxColumn10.HeaderText = "DeparturePlace";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripTextBoxFind
-            // 
-            this.toolStripTextBoxFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxFind.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBoxFind.Name = "toolStripTextBoxFind";
-            this.toolStripTextBoxFind.Size = new System.Drawing.Size(100, 25);
-            // 
-            // toolStripButtonFind
-            // 
-            this.toolStripButtonFind.Image = global::TaxiHub.Properties.Resources.free_icon_magnifier_2397983;
-            this.toolStripButtonFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFind.Name = "toolStripButtonFind";
-            this.toolStripButtonFind.Size = new System.Drawing.Size(62, 22);
-            this.toolStripButtonFind.Text = "Поиск";
-            this.toolStripButtonFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripButtonFind.Click += new System.EventHandler(this.toolStripButtonFind_Click);
-            // 
-            // FilterCheckBox
-            // 
-            this.FilterCheckBox.AutoSize = true;
-            this.FilterCheckBox.Location = new System.Drawing.Point(452, 5);
-            this.FilterCheckBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.FilterCheckBox.Name = "FilterCheckBox";
-            this.FilterCheckBox.Size = new System.Drawing.Size(66, 17);
-            this.FilterCheckBox.TabIndex = 4;
-            this.FilterCheckBox.Text = "Фильтр";
-            this.FilterCheckBox.UseVisualStyleBackColor = true;
-            this.FilterCheckBox.CheckedChanged += new System.EventHandler(this.FilterCheckBox_CheckedChanged);
             // 
             // OrdersForm
             // 
@@ -392,19 +405,20 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton ordersBindingNavigatorSaveItem;
         private System.Windows.Forms.DataGridView ordersDataGridView;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFind;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFind;
+        private System.Windows.Forms.CheckBox FilterCheckBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostPerPerson;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFind;
-        private System.Windows.Forms.ToolStripButton toolStripButtonFind;
-        private System.Windows.Forms.CheckBox FilterCheckBox;
     }
 }

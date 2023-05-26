@@ -43,6 +43,8 @@
             this.FeedBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.связныеСправочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrdersClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запросыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RequestExamplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitContextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +71,8 @@
             this.FileToolStripMenuItem,
             this.HelpToolStripMenuItem,
             this.ReferencesToolStripMenuItem,
-            this.связныеСправочникиToolStripMenuItem});
+            this.связныеСправочникиToolStripMenuItem,
+            this.запросыToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(685, 24);
@@ -174,9 +177,24 @@
             // 
             this.OrdersClientsToolStripMenuItem.Image = global::TaxiHub.Properties.Resources.free_icon_mobile_5283327;
             this.OrdersClientsToolStripMenuItem.Name = "OrdersClientsToolStripMenuItem";
-            this.OrdersClientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OrdersClientsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.OrdersClientsToolStripMenuItem.Text = "Заказы клиентов";
             this.OrdersClientsToolStripMenuItem.Click += new System.EventHandler(this.OrdersClientsToolStripMenuItem_Click);
+            // 
+            // запросыToolStripMenuItem
+            // 
+            this.запросыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RequestExamplesToolStripMenuItem});
+            this.запросыToolStripMenuItem.Name = "запросыToolStripMenuItem";
+            this.запросыToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.запросыToolStripMenuItem.Text = "Запросы";
+            // 
+            // RequestExamplesToolStripMenuItem
+            // 
+            this.RequestExamplesToolStripMenuItem.Name = "RequestExamplesToolStripMenuItem";
+            this.RequestExamplesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.RequestExamplesToolStripMenuItem.Text = "Примеры запросов";
+            this.RequestExamplesToolStripMenuItem.Click += new System.EventHandler(this.RequestExamplesToolStripMenuItem_Click);
             // 
             // MainContextMenuStrip
             // 
@@ -377,6 +395,8 @@
         private System.Windows.Forms.ToolStripMenuItem OrdersClientsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton OrdersClientsToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem запросыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RequestExamplesToolStripMenuItem;
     }
 }
 

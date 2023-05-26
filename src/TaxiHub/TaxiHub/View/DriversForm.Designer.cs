@@ -60,6 +60,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnSex = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.FilterCheckBox = new System.Windows.Forms.CheckBox();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.driversBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.driversBindingNavigator)).BeginInit();
@@ -255,7 +256,8 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumnSex});
+            this.dataGridViewTextBoxColumnSex,
+            this.FullName});
             this.driversDataGridView.DataSource = this.driversBindingSource;
             this.driversDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.driversDataGridView.Location = new System.Drawing.Point(0, 25);
@@ -330,6 +332,13 @@
             this.FilterCheckBox.UseVisualStyleBackColor = true;
             this.FilterCheckBox.CheckedChanged += new System.EventHandler(this.FilterCheckBox_CheckedChanged);
             // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "FullName";
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            // 
             // DriversForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +393,6 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxFind;
         private System.Windows.Forms.ToolStripButton toolStripButtonFind;
         private System.Windows.Forms.CheckBox FilterCheckBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
     }
 }

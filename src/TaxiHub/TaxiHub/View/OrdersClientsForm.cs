@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TaxiHub.Services;
 
 namespace TaxiHub.View
 {
@@ -33,6 +34,8 @@ namespace TaxiHub.View
 
         private void OrdersClientsForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.FeedBack". При необходимости она может быть перемещена или удалена.
+            this.feedBackTableAdapter.Fill(this.taxiCompanyDataSet.FeedBack);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Orders". При необходимости она может быть перемещена или удалена.
             this.ordersTableAdapter.Fill(this.taxiCompanyDataSet.Orders);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Clients". При необходимости она может быть перемещена или удалена.
@@ -42,9 +45,41 @@ namespace TaxiHub.View
 
         private void ordersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            Validate();
-            ordersBindingSource.EndEdit();
-            tableAdapterManager.UpdateAll(taxiCompanyDataSet);
+            try
+            {
+                Validate();
+                ordersBindingSource.EndEdit();
+                tableAdapterManager.UpdateAll(taxiCompanyDataSet);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ordersDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                string carNumber = "";
+
+                if (((DataRowView)ordersBindingSource.Current)["CarNumber"].ToString() != "")
+                {
+                    carNumber = ((DataRowView)ordersBindingSource.Current)["CarNumber"].ToString();
+                }
+
+                carNumber = SingletonFactoryForm.CarsForm.ShowSelectForm(carNumber);
+
+                if (carNumber != "")
+                {
+                    MessageBox.Show(carNumber.ToString());
+                    ((DataRowView)ordersBindingSource.Current)["CarNumber"] = carNumber;
+                    
+                }
+            }
         }
     }
 }

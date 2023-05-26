@@ -36,6 +36,8 @@
             System.Windows.Forms.Label middleNameLabel;
             System.Windows.Forms.Label balanceLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersClientsForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ClientGroupBox = new System.Windows.Forms.GroupBox();
             this.clientsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -75,19 +77,23 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ordersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.ordersDataGridView = new System.Windows.Forms.DataGridView();
+            this.clientsTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.ClientsTableAdapter();
+            this.tableAdapterManager = new TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager();
+            this.ordersTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.OrdersTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumnStatus = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DGVButtonCarNumber = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FeedBack = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientsTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.ClientsTableAdapter();
-            this.tableAdapterManager = new TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager();
-            this.ordersTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.OrdersTableAdapter();
+            this.feedBackBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.feedBackTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.FeedBackTableAdapter();
             idLabel = new System.Windows.Forms.Label();
             phoneNumberLabel = new System.Windows.Forms.Label();
             firstNameLabel = new System.Windows.Forms.Label();
@@ -105,12 +111,13 @@
             this.OrdersBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.feedBackBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(9, 134);
+            idLabel.Location = new System.Drawing.Point(9, 57);
             idLabel.Name = "idLabel";
             idLabel.Size = new System.Drawing.Size(19, 13);
             idLabel.TabIndex = 0;
@@ -119,7 +126,7 @@
             // phoneNumberLabel
             // 
             phoneNumberLabel.AutoSize = true;
-            phoneNumberLabel.Location = new System.Drawing.Point(9, 160);
+            phoneNumberLabel.Location = new System.Drawing.Point(9, 83);
             phoneNumberLabel.Name = "phoneNumberLabel";
             phoneNumberLabel.Size = new System.Drawing.Size(81, 13);
             phoneNumberLabel.TabIndex = 2;
@@ -128,7 +135,7 @@
             // firstNameLabel
             // 
             firstNameLabel.AutoSize = true;
-            firstNameLabel.Location = new System.Drawing.Point(9, 186);
+            firstNameLabel.Location = new System.Drawing.Point(9, 109);
             firstNameLabel.Name = "firstNameLabel";
             firstNameLabel.Size = new System.Drawing.Size(60, 13);
             firstNameLabel.TabIndex = 4;
@@ -137,7 +144,7 @@
             // secondNameLabel
             // 
             secondNameLabel.AutoSize = true;
-            secondNameLabel.Location = new System.Drawing.Point(9, 212);
+            secondNameLabel.Location = new System.Drawing.Point(9, 135);
             secondNameLabel.Name = "secondNameLabel";
             secondNameLabel.Size = new System.Drawing.Size(78, 13);
             secondNameLabel.TabIndex = 6;
@@ -146,7 +153,7 @@
             // middleNameLabel
             // 
             middleNameLabel.AutoSize = true;
-            middleNameLabel.Location = new System.Drawing.Point(9, 238);
+            middleNameLabel.Location = new System.Drawing.Point(9, 161);
             middleNameLabel.Name = "middleNameLabel";
             middleNameLabel.Size = new System.Drawing.Size(72, 13);
             middleNameLabel.TabIndex = 8;
@@ -155,7 +162,7 @@
             // balanceLabel
             // 
             balanceLabel.AutoSize = true;
-            balanceLabel.Location = new System.Drawing.Point(9, 264);
+            balanceLabel.Location = new System.Drawing.Point(9, 187);
             balanceLabel.Name = "balanceLabel";
             balanceLabel.Size = new System.Drawing.Size(49, 13);
             balanceLabel.TabIndex = 10;
@@ -164,8 +171,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.90339F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.09661F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.05981F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.94019F));
             this.tableLayoutPanel1.Controls.Add(this.ClientGroupBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -178,7 +185,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 413F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 413F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 413F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(766, 413);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1017, 413);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // ClientGroupBox
@@ -199,7 +206,7 @@
             this.ClientGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ClientGroupBox.Location = new System.Drawing.Point(3, 3);
             this.ClientGroupBox.Name = "ClientGroupBox";
-            this.ClientGroupBox.Size = new System.Drawing.Size(291, 407);
+            this.ClientGroupBox.Size = new System.Drawing.Size(309, 407);
             this.ClientGroupBox.TabIndex = 0;
             this.ClientGroupBox.TabStop = false;
             this.ClientGroupBox.Text = "Клиент";
@@ -234,7 +241,7 @@
             this.clientsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.clientsBindingNavigator.Name = "clientsBindingNavigator";
             this.clientsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.clientsBindingNavigator.Size = new System.Drawing.Size(291, 25);
+            this.clientsBindingNavigator.Size = new System.Drawing.Size(309, 25);
             this.clientsBindingNavigator.TabIndex = 1;
             this.clientsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -300,7 +307,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -346,7 +352,7 @@
             // idTextBox
             // 
             this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientsBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(96, 131);
+            this.idTextBox.Location = new System.Drawing.Point(96, 54);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(189, 20);
             this.idTextBox.TabIndex = 1;
@@ -354,7 +360,7 @@
             // phoneNumberTextBox
             // 
             this.phoneNumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientsBindingSource, "PhoneNumber", true));
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(96, 157);
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(96, 80);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
             this.phoneNumberTextBox.Size = new System.Drawing.Size(189, 20);
             this.phoneNumberTextBox.TabIndex = 3;
@@ -362,7 +368,7 @@
             // firstNameTextBox
             // 
             this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientsBindingSource, "FirstName", true));
-            this.firstNameTextBox.Location = new System.Drawing.Point(96, 183);
+            this.firstNameTextBox.Location = new System.Drawing.Point(96, 106);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(189, 20);
             this.firstNameTextBox.TabIndex = 5;
@@ -370,7 +376,7 @@
             // secondNameTextBox
             // 
             this.secondNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientsBindingSource, "SecondName", true));
-            this.secondNameTextBox.Location = new System.Drawing.Point(96, 209);
+            this.secondNameTextBox.Location = new System.Drawing.Point(96, 132);
             this.secondNameTextBox.Name = "secondNameTextBox";
             this.secondNameTextBox.Size = new System.Drawing.Size(189, 20);
             this.secondNameTextBox.TabIndex = 7;
@@ -378,7 +384,7 @@
             // middleNameTextBox
             // 
             this.middleNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientsBindingSource, "MiddleName", true));
-            this.middleNameTextBox.Location = new System.Drawing.Point(96, 235);
+            this.middleNameTextBox.Location = new System.Drawing.Point(96, 158);
             this.middleNameTextBox.Name = "middleNameTextBox";
             this.middleNameTextBox.Size = new System.Drawing.Size(189, 20);
             this.middleNameTextBox.TabIndex = 9;
@@ -386,7 +392,7 @@
             // balanceTextBox
             // 
             this.balanceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clientsBindingSource, "Balance", true));
-            this.balanceTextBox.Location = new System.Drawing.Point(96, 261);
+            this.balanceTextBox.Location = new System.Drawing.Point(96, 184);
             this.balanceTextBox.Name = "balanceTextBox";
             this.balanceTextBox.Size = new System.Drawing.Size(189, 20);
             this.balanceTextBox.TabIndex = 11;
@@ -396,9 +402,9 @@
             this.groupBox1.Controls.Add(this.OrdersBindingNavigator);
             this.groupBox1.Controls.Add(this.ordersDataGridView);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(300, 3);
+            this.groupBox1.Location = new System.Drawing.Point(318, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(463, 407);
+            this.groupBox1.Size = new System.Drawing.Size(696, 407);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Заказы";
@@ -433,7 +439,7 @@
             this.OrdersBindingNavigator.MovePreviousItem = this.toolStripButton4;
             this.OrdersBindingNavigator.Name = "OrdersBindingNavigator";
             this.OrdersBindingNavigator.PositionItem = this.toolStripTextBox1;
-            this.OrdersBindingNavigator.Size = new System.Drawing.Size(457, 25);
+            this.OrdersBindingNavigator.Size = new System.Drawing.Size(690, 25);
             this.OrdersBindingNavigator.TabIndex = 2;
             this.OrdersBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -494,7 +500,6 @@
             // 
             this.toolStripTextBox1.AccessibleName = "Положение";
             this.toolStripTextBox1.AutoSize = false;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(50, 23);
             this.toolStripTextBox1.Text = "0";
@@ -550,77 +555,19 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
+            this.dataGridViewComboBoxColumnStatus,
             this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
+            this.DGVButtonCarNumber,
             this.dataGridViewTextBoxColumn8,
+            this.FeedBack,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
             this.ordersDataGridView.DataSource = this.ordersBindingSource;
             this.ordersDataGridView.Location = new System.Drawing.Point(3, 44);
             this.ordersDataGridView.Name = "ordersDataGridView";
-            this.ordersDataGridView.Size = new System.Drawing.Size(460, 363);
+            this.ordersDataGridView.Size = new System.Drawing.Size(693, 363);
             this.ordersDataGridView.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Date";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Cost";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Cost";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "PassengersNumber";
-            this.dataGridViewTextBoxColumn4.HeaderText = "PassengersNumber";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Status";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Status";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Id_Client";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Id_Client";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "CarNumber";
-            this.dataGridViewTextBoxColumn7.HeaderText = "CarNumber";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Id_FeedBack";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Id_FeedBack";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "ArrivalPlace";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ArrivalPlace";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "DeparturePlace";
-            this.dataGridViewTextBoxColumn10.HeaderText = "DeparturePlace";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.ordersDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordersDataGridView_CellContentClick);
             // 
             // clientsTableAdapter
             // 
@@ -640,11 +587,109 @@
             // 
             this.ordersTableAdapter.ClearBeforeFill = true;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Cost";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Cost";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "PassengersNumber";
+            this.dataGridViewTextBoxColumn4.HeaderText = "PassengersNumber";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "CostPerPerson";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn5.HeaderText = "CostPerPerson";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewComboBoxColumnStatus
+            // 
+            this.dataGridViewComboBoxColumnStatus.DataPropertyName = "Status";
+            this.dataGridViewComboBoxColumnStatus.HeaderText = "Status";
+            this.dataGridViewComboBoxColumnStatus.Items.AddRange(new object[] {
+            "Завершен",
+            "Свободна"});
+            this.dataGridViewComboBoxColumnStatus.Name = "dataGridViewComboBoxColumnStatus";
+            this.dataGridViewComboBoxColumnStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewComboBoxColumnStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Id_Client";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Id_Client";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // DGVButtonCarNumber
+            // 
+            this.DGVButtonCarNumber.DataPropertyName = "CarNumber";
+            this.DGVButtonCarNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DGVButtonCarNumber.HeaderText = "CarNumber";
+            this.DGVButtonCarNumber.Name = "DGVButtonCarNumber";
+            this.DGVButtonCarNumber.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVButtonCarNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Id_FeedBack";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Id_FeedBack";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // FeedBack
+            // 
+            this.FeedBack.DataPropertyName = "FeedBack";
+            this.FeedBack.HeaderText = "FeedBack";
+            this.FeedBack.Name = "FeedBack";
+            this.FeedBack.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "ArrivalPlace";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ArrivalPlace";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "DeparturePlace";
+            this.dataGridViewTextBoxColumn10.HeaderText = "DeparturePlace";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // feedBackBindingSource
+            // 
+            this.feedBackBindingSource.DataMember = "FeedBack";
+            this.feedBackBindingSource.DataSource = this.taxiCompanyDataSet;
+            // 
+            // feedBackTableAdapter
+            // 
+            this.feedBackTableAdapter.ClearBeforeFill = true;
+            // 
             // OrdersClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 413);
+            this.ClientSize = new System.Drawing.Size(1017, 413);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OrdersClientsForm";
@@ -664,6 +709,7 @@
             this.OrdersBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.feedBackBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -717,10 +763,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewButtonColumn DGVButtonCarNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FeedBack;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.BindingSource feedBackBindingSource;
+        private TaxiCompanyDataSetTableAdapters.FeedBackTableAdapter feedBackTableAdapter;
     }
 }

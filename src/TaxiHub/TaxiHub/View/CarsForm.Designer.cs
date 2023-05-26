@@ -38,12 +38,11 @@
             System.Windows.Forms.Label lastDateTechnicalInspectionLabel;
             System.Windows.Forms.Label driversLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarsForm));
-            this.taxiCompanyDataSet = new TaxiHub.TaxiCompanyDataSet();
-            this.carsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.carsTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.CarsTableAdapter();
-            this.tableAdapterManager = new TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager();
+            System.Windows.Forms.Label fullNameDriverLabel;
             this.carsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.carsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.taxiCompanyDataSet = new TaxiHub.TaxiCompanyDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -55,6 +54,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.carsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSelected = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.PropertyCarsBindingSourceToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBoxFind = new System.Windows.Forms.ToolStripTextBox();
@@ -68,6 +68,11 @@
             this.driversTextBox = new System.Windows.Forms.TextBox();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.FilterCheckBox = new System.Windows.Forms.CheckBox();
+            this.carsTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.CarsTableAdapter();
+            this.tableAdapterManager = new TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager();
+            this.driversBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.driversTableAdapter = new TaxiHub.TaxiCompanyDataSetTableAdapters.DriversTableAdapter();
+            this.fullNameDriverLabel1 = new System.Windows.Forms.Label();
             carNumberLabel = new System.Windows.Forms.Label();
             colorLabel = new System.Windows.Forms.Label();
             seatsNumberLabel = new System.Windows.Forms.Label();
@@ -76,10 +81,12 @@
             statusLabel = new System.Windows.Forms.Label();
             lastDateTechnicalInspectionLabel = new System.Windows.Forms.Label();
             driversLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).BeginInit();
+            fullNameDriverLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.carsBindingNavigator)).BeginInit();
             this.carsBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.driversBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // carNumberLabel
@@ -162,30 +169,6 @@
             driversLabel.TabIndex = 15;
             driversLabel.Text = "Drivers:";
             // 
-            // taxiCompanyDataSet
-            // 
-            this.taxiCompanyDataSet.DataSetName = "TaxiCompanyDataSet";
-            this.taxiCompanyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // carsBindingSource
-            // 
-            this.carsBindingSource.DataMember = "Cars";
-            this.carsBindingSource.DataSource = this.taxiCompanyDataSet;
-            // 
-            // carsTableAdapter
-            // 
-            this.carsTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CarsTableAdapter = this.carsTableAdapter;
-            this.tableAdapterManager.ClientsTableAdapter = null;
-            this.tableAdapterManager.DriversTableAdapter = null;
-            this.tableAdapterManager.FeedBackTableAdapter = null;
-            this.tableAdapterManager.OrdersTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // carsBindingNavigator
             // 
             this.carsBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -205,6 +188,7 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.carsBindingNavigatorSaveItem,
+            this.toolStripButtonSelected,
             this.toolStripSeparator1,
             this.PropertyCarsBindingSourceToolStripComboBox,
             this.toolStripTextBoxFind,
@@ -216,7 +200,7 @@
             this.carsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.carsBindingNavigator.Name = "carsBindingNavigator";
             this.carsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.carsBindingNavigator.Size = new System.Drawing.Size(611, 25);
+            this.carsBindingNavigator.Size = new System.Drawing.Size(737, 25);
             this.carsBindingNavigator.TabIndex = 0;
             this.carsBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -228,6 +212,16 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
+            // 
+            // carsBindingSource
+            // 
+            this.carsBindingSource.DataMember = "Cars";
+            this.carsBindingSource.DataSource = this.taxiCompanyDataSet;
+            // 
+            // taxiCompanyDataSet
+            // 
+            this.taxiCompanyDataSet.DataSetName = "TaxiCompanyDataSet";
+            this.taxiCompanyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -272,7 +266,6 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -315,6 +308,15 @@
             this.carsBindingNavigatorSaveItem.Text = "Сохранить данные";
             this.carsBindingNavigatorSaveItem.Click += new System.EventHandler(this.carsBindingNavigatorSaveItem_Click);
             // 
+            // toolStripButtonSelected
+            // 
+            this.toolStripButtonSelected.Image = global::TaxiHub.Properties.Resources.free_icon_select_all_8550949;
+            this.toolStripButtonSelected.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSelected.Name = "toolStripButtonSelected";
+            this.toolStripButtonSelected.Size = new System.Drawing.Size(74, 22);
+            this.toolStripButtonSelected.Text = "Выбрать";
+            this.toolStripButtonSelected.Click += new System.EventHandler(this.toolStripButtonSelected_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -329,7 +331,6 @@
             // toolStripTextBoxFind
             // 
             this.toolStripTextBoxFind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBoxFind.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxFind.Name = "toolStripTextBoxFind";
             this.toolStripTextBoxFind.Size = new System.Drawing.Size(100, 25);
             // 
@@ -352,7 +353,7 @@
             this.carNumberTextBox.Location = new System.Drawing.Point(178, 43);
             this.carNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 5, 3);
             this.carNumberTextBox.Name = "carNumberTextBox";
-            this.carNumberTextBox.Size = new System.Drawing.Size(205, 20);
+            this.carNumberTextBox.Size = new System.Drawing.Size(331, 20);
             this.carNumberTextBox.TabIndex = 2;
             // 
             // colorTextBox
@@ -363,7 +364,7 @@
             this.colorTextBox.Location = new System.Drawing.Point(178, 69);
             this.colorTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.colorTextBox.Name = "colorTextBox";
-            this.colorTextBox.Size = new System.Drawing.Size(205, 20);
+            this.colorTextBox.Size = new System.Drawing.Size(331, 20);
             this.colorTextBox.TabIndex = 4;
             // 
             // seatsNumberTextBox
@@ -374,7 +375,7 @@
             this.seatsNumberTextBox.Location = new System.Drawing.Point(178, 95);
             this.seatsNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.seatsNumberTextBox.Name = "seatsNumberTextBox";
-            this.seatsNumberTextBox.Size = new System.Drawing.Size(205, 20);
+            this.seatsNumberTextBox.Size = new System.Drawing.Size(331, 20);
             this.seatsNumberTextBox.TabIndex = 6;
             // 
             // releaseYearTextBox
@@ -385,7 +386,7 @@
             this.releaseYearTextBox.Location = new System.Drawing.Point(178, 121);
             this.releaseYearTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.releaseYearTextBox.Name = "releaseYearTextBox";
-            this.releaseYearTextBox.Size = new System.Drawing.Size(145, 20);
+            this.releaseYearTextBox.Size = new System.Drawing.Size(271, 20);
             this.releaseYearTextBox.TabIndex = 8;
             // 
             // carBrandTextBox
@@ -396,7 +397,7 @@
             this.carBrandTextBox.Location = new System.Drawing.Point(178, 147);
             this.carBrandTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.carBrandTextBox.Name = "carBrandTextBox";
-            this.carBrandTextBox.Size = new System.Drawing.Size(205, 20);
+            this.carBrandTextBox.Size = new System.Drawing.Size(331, 20);
             this.carBrandTextBox.TabIndex = 10;
             // 
             // lastDateTechnicalInspectionDateTimePicker
@@ -407,7 +408,7 @@
             this.lastDateTechnicalInspectionDateTimePicker.Location = new System.Drawing.Point(178, 199);
             this.lastDateTechnicalInspectionDateTimePicker.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.lastDateTechnicalInspectionDateTimePicker.Name = "lastDateTechnicalInspectionDateTimePicker";
-            this.lastDateTechnicalInspectionDateTimePicker.Size = new System.Drawing.Size(205, 20);
+            this.lastDateTechnicalInspectionDateTimePicker.Size = new System.Drawing.Size(331, 20);
             this.lastDateTechnicalInspectionDateTimePicker.TabIndex = 14;
             // 
             // driversTextBox
@@ -418,7 +419,7 @@
             this.driversTextBox.Location = new System.Drawing.Point(178, 225);
             this.driversTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.driversTextBox.Name = "driversTextBox";
-            this.driversTextBox.Size = new System.Drawing.Size(316, 20);
+            this.driversTextBox.Size = new System.Drawing.Size(442, 20);
             this.driversTextBox.TabIndex = 16;
             // 
             // statusComboBox
@@ -436,7 +437,7 @@
             // FilterCheckBox
             // 
             this.FilterCheckBox.AutoSize = true;
-            this.FilterCheckBox.Location = new System.Drawing.Point(535, 4);
+            this.FilterCheckBox.Location = new System.Drawing.Point(610, 6);
             this.FilterCheckBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.FilterCheckBox.Name = "FilterCheckBox";
             this.FilterCheckBox.Size = new System.Drawing.Size(66, 17);
@@ -445,12 +446,55 @@
             this.FilterCheckBox.UseVisualStyleBackColor = true;
             this.FilterCheckBox.CheckedChanged += new System.EventHandler(this.FilterCheckBox_CheckedChanged);
             // 
+            // carsTableAdapter
+            // 
+            this.carsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CarsTableAdapter = this.carsTableAdapter;
+            this.tableAdapterManager.ClientsTableAdapter = null;
+            this.tableAdapterManager.DriversTableAdapter = null;
+            this.tableAdapterManager.FeedBackTableAdapter = null;
+            this.tableAdapterManager.OrdersTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = TaxiHub.TaxiCompanyDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // driversBindingSource
+            // 
+            this.driversBindingSource.DataMember = "Drivers";
+            this.driversBindingSource.DataSource = this.taxiCompanyDataSet;
+            // 
+            // driversTableAdapter
+            // 
+            this.driversTableAdapter.ClearBeforeFill = true;
+            // 
+            // fullNameDriverLabel
+            // 
+            fullNameDriverLabel.AutoSize = true;
+            fullNameDriverLabel.Location = new System.Drawing.Point(14, 257);
+            fullNameDriverLabel.Name = "fullNameDriverLabel";
+            fullNameDriverLabel.Size = new System.Drawing.Size(88, 13);
+            fullNameDriverLabel.TabIndex = 19;
+            fullNameDriverLabel.Text = "Full Name Driver:";
+            // 
+            // fullNameDriverLabel1
+            // 
+            this.fullNameDriverLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.carsBindingSource, "FullNameDriver", true));
+            this.fullNameDriverLabel1.Location = new System.Drawing.Point(108, 257);
+            this.fullNameDriverLabel1.Name = "fullNameDriverLabel1";
+            this.fullNameDriverLabel1.Size = new System.Drawing.Size(100, 23);
+            this.fullNameDriverLabel1.TabIndex = 20;
+            this.fullNameDriverLabel1.Text = "label1";
+            // 
             // CarsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(611, 265);
+            this.ClientSize = new System.Drawing.Size(737, 323);
+            this.Controls.Add(fullNameDriverLabel);
+            this.Controls.Add(this.fullNameDriverLabel1);
             this.Controls.Add(this.FilterCheckBox);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(carNumberLabel);
@@ -474,11 +518,13 @@
             this.Name = "CarsForm";
             this.Text = "Cars";
             this.Load += new System.EventHandler(this.CarsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).EndInit();
+            this.Shown += new System.EventHandler(this.CarsForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.carsBindingNavigator)).EndInit();
             this.carsBindingNavigator.ResumeLayout(false);
             this.carsBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.carsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxiCompanyDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.driversBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,5 +562,9 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonFind;
         private System.Windows.Forms.CheckBox FilterCheckBox;
         private System.Windows.Forms.ToolStripComboBox PropertyCarsBindingSourceToolStripComboBox;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSelected;
+        private System.Windows.Forms.BindingSource driversBindingSource;
+        private TaxiCompanyDataSetTableAdapters.DriversTableAdapter driversTableAdapter;
+        private System.Windows.Forms.Label fullNameDriverLabel1;
     }
 }

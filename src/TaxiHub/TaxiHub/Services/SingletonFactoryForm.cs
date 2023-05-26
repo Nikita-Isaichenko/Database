@@ -37,6 +37,8 @@ namespace TaxiHub.Services
         /// </summary>
         private static OrdersForm _ordersForm;
 
+        private static FormSQL _formSQL;
+
         /// <summary>
         /// Форма с данными о клиентах и связанными с ними заказами.
         /// </summary>
@@ -117,6 +119,16 @@ namespace TaxiHub.Services
                 return (_ordersClientsForm is null || _ordersClientsForm.IsDisposed)
                     ? _ordersClientsForm = new OrdersClientsForm()
                     : _ordersClientsForm;
+            }
+        }
+
+        public static FormSQL FormSQL
+        {
+            get
+            {
+                return (_formSQL is null || _formSQL.IsDisposed)
+                    ? _formSQL = new FormSQL()
+                    : _formSQL;
             }
         }
     }

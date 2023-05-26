@@ -25,6 +25,11 @@ namespace TaxiHub
         {
             form.Show();
             form.Activate();
+
+            if (form is CarsForm carsForm)
+            {
+                carsForm.SetDefault();
+            }
         }
 
         private void AboutText(string about)
@@ -135,6 +140,11 @@ namespace TaxiHub
         private void OrdersClientsToolStripButton_Click(object sender, EventArgs e)
         {
             ShowForm(SingletonFactoryForm.OrdersClientsForm);
+        }
+
+        private void RequestExamplesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(SingletonFactoryForm.FormSQL);
         }
     }
 }

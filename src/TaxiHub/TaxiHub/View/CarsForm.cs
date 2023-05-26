@@ -12,11 +12,33 @@ namespace TaxiHub.View
 {
     public partial class CarsForm : Form
     {
+        private string _currentCarNumber;
+
         public CarsForm()
         {
-            InitializeComponent();
-            
-            
+            InitializeComponent();     
+        }
+
+        public void SetDefault()
+        {
+            toolStripButtonSelected.Visible = false;
+            carsBindingSource.Position = 0;
+        }
+        
+        public string ShowSelectForm(string carNumber)
+        {
+            toolStripButtonSelected.Visible = true;
+            _currentCarNumber = carNumber;
+
+            if (ShowDialog() == DialogResult.OK)
+            {
+                return
+                ((DataRowView)carsBindingSource.Current)["CarNumber"].ToString();
+            }                
+            else
+            {
+                return "";
+            }
         }
 
         private void carsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -29,6 +51,8 @@ namespace TaxiHub.View
 
         private void CarsForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Drivers". При необходимости она может быть перемещена или удалена.
+            this.driversTableAdapter.Fill(this.taxiCompanyDataSet.Drivers);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.Cars". При необходимости она может быть перемещена или удалена.
             this.carsTableAdapter.Fill(this.taxiCompanyDataSet.Cars);
 
@@ -134,6 +158,17 @@ namespace TaxiHub.View
                 carsBindingSource.Filter = "";
                 FilterCheckBox.Checked = false;
             }
+        }
+
+        private void toolStripButtonSelected_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void CarsForm_Shown(object sender, EventArgs e)
+        {
+            carsBindingSource.Position = 
+                carsBindingSource.Find("CarNumber", _currentCarNumber);
         }
     }
 }

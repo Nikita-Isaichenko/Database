@@ -19,7 +19,7 @@ namespace TaxiHub.View
 
         private string GetSelectedFieldName()
         {
-            return driversDataGridView.Columns[driversDataGridView.CurrentCell.ColumnIndex]
+            return ordersDataGridView.Columns[ordersDataGridView.CurrentCell.ColumnIndex]
                 .DataPropertyName;
         }
 

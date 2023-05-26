@@ -53,6 +53,7 @@ namespace TaxiHub {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -64,6 +65,9 @@ namespace TaxiHub {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -96,6 +100,7 @@ namespace TaxiHub {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -197,6 +202,7 @@ namespace TaxiHub {
         public override global::System.Data.DataSet Clone() {
             TaxiCompanyDataSet cln = ((TaxiCompanyDataSet)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -312,7 +318,7 @@ namespace TaxiHub {
             this.Namespace = "http://tempuri.org/TaxiCompanyDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCars = new CarsDataTable();
+            this.tableCars = new CarsDataTable(false);
             base.Tables.Add(this.tableCars);
             this.tableClients = new ClientsDataTable();
             base.Tables.Add(this.tableClients);
@@ -425,6 +431,12 @@ namespace TaxiHub {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitExpressions() {
+            this.Cars.FullNameDriverColumn.Expression = "Parent(FK_Cars_Drivers).SecondName";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void CarsRowChangeEventHandler(object sender, CarsRowChangeEvent e);
         
@@ -463,12 +475,23 @@ namespace TaxiHub {
             
             private global::System.Data.DataColumn columnDrivers;
             
+            private global::System.Data.DataColumn columnFullNameDriver;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public CarsDataTable() {
+            public CarsDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public CarsDataTable(bool initExpressions) {
                 this.TableName = "Cars";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -562,6 +585,14 @@ namespace TaxiHub {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FullNameDriverColumn {
+                get {
+                    return this.columnFullNameDriver;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -597,6 +628,28 @@ namespace TaxiHub {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public CarsRow AddCarsRow(string CarNumber, string Color, byte SeatsNumber, short ReleaseYear, string CarBrand, string Status, System.DateTime LastDateTechnicalInspection, DriversRow parentDriversRowByFK_Cars_Drivers, string FullNameDriver) {
+                CarsRow rowCarsRow = ((CarsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        CarNumber,
+                        Color,
+                        SeatsNumber,
+                        ReleaseYear,
+                        CarBrand,
+                        Status,
+                        LastDateTechnicalInspection,
+                        null,
+                        FullNameDriver};
+                if ((parentDriversRowByFK_Cars_Drivers != null)) {
+                    columnValuesArray[7] = parentDriversRowByFK_Cars_Drivers[0];
+                }
+                rowCarsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCarsRow);
+                return rowCarsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public CarsRow AddCarsRow(string CarNumber, string Color, byte SeatsNumber, short ReleaseYear, string CarBrand, string Status, System.DateTime LastDateTechnicalInspection, DriversRow parentDriversRowByFK_Cars_Drivers) {
                 CarsRow rowCarsRow = ((CarsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -607,6 +660,7 @@ namespace TaxiHub {
                         CarBrand,
                         Status,
                         LastDateTechnicalInspection,
+                        null,
                         null};
                 if ((parentDriversRowByFK_Cars_Drivers != null)) {
                     columnValuesArray[7] = parentDriversRowByFK_Cars_Drivers[0];
@@ -648,6 +702,7 @@ namespace TaxiHub {
                 this.columnStatus = base.Columns["Status"];
                 this.columnLastDateTechnicalInspection = base.Columns["LastDateTechnicalInspection"];
                 this.columnDrivers = base.Columns["Drivers"];
+                this.columnFullNameDriver = base.Columns["FullNameDriver"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -669,6 +724,8 @@ namespace TaxiHub {
                 base.Columns.Add(this.columnLastDateTechnicalInspection);
                 this.columnDrivers = new global::System.Data.DataColumn("Drivers", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDrivers);
+                this.columnFullNameDriver = new global::System.Data.DataColumn("FullNameDriver", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFullNameDriver);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCarNumber}, true));
                 this.columnCarNumber.AllowDBNull = false;
@@ -684,6 +741,7 @@ namespace TaxiHub {
                 this.columnStatus.MaxLength = 20;
                 this.columnLastDateTechnicalInspection.AllowDBNull = false;
                 this.columnDrivers.AllowDBNull = false;
+                this.columnFullNameDriver.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -702,6 +760,12 @@ namespace TaxiHub {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(CarsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitExpressions() {
+                this.FullNameDriverColumn.Expression = "Parent(FK_Cars_Drivers).SecondName";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2334,6 +2398,22 @@ namespace TaxiHub {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FullNameDriver {
+                get {
+                    try {
+                        return ((string)(this[this.tableCars.FullNameDriverColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullNameDriver\' в таблице \'Cars\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCars.FullNameDriverColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DriversRow DriversRow {
                 get {
                     return ((DriversRow)(this.GetParentRow(this.Table.ParentRelations["FK_Cars_Drivers"])));
@@ -2341,6 +2421,18 @@ namespace TaxiHub {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Cars_Drivers"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFullNameDriverNull() {
+                return this.IsNull(this.tableCars.FullNameDriverColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFullNameDriverNull() {
+                this[this.tableCars.FullNameDriverColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3280,7 +3372,7 @@ SELECT CarNumber, Color, SeatsNumber, ReleaseYear, CarBrand, Status, LastDateTec
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual TaxiCompanyDataSet.CarsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            TaxiCompanyDataSet.CarsDataTable dataTable = new TaxiCompanyDataSet.CarsDataTable();
+            TaxiCompanyDataSet.CarsDataTable dataTable = new TaxiCompanyDataSet.CarsDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4045,7 +4137,7 @@ SELECT Id, PhoneNumber, FirstName, SecondName, MiddleName, Balance FROM Clients 
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Drivers] WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)) AND ([Sex] = @Original_Sex))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Drivers] WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)) AND ([Sex] = @Original_Sex))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Passport", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Passport", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4059,7 +4151,7 @@ SELECT Id, PhoneNumber, FirstName, SecondName, MiddleName, Balance FROM Clients 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Sex", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Drivers] ([DriversLicenseNumber], [Passport], [Experience], [PhoneNumber], [Name], [SecondName], [MiddleName], [Sex]) VALUES (@DriversLicenseNumber, @Passport, @Experience, @PhoneNumber, @Name, @SecondName, @MiddleName, @Sex);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Drivers] ([DriversLicenseNumber], [Passport], [Experience], [PhoneNumber], [Name], [SecondName], [MiddleName], [Sex]) VALUES (@DriversLicenseNumber, @Passport, @Experience, @PhoneNumber, @Name, @SecondName, @MiddleName, @Sex);
 SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName, Sex FROM Drivers WHERE (DriversLicenseNumber = @DriversLicenseNumber)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4072,7 +4164,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Drivers] SET [DriversLicenseNumber] = @DriversLicenseNumber, [Passport] = @Passport, [Experience] = @Experience, [PhoneNumber] = @PhoneNumber, [Name] = @Name, [SecondName] = @SecondName, [MiddleName] = @MiddleName, [Sex] = @Sex WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)) AND ([Sex] = @Original_Sex));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Drivers] SET [DriversLicenseNumber] = @DriversLicenseNumber, [Passport] = @Passport, [Experience] = @Experience, [PhoneNumber] = @PhoneNumber, [Name] = @Name, [SecondName] = @SecondName, [MiddleName] = @MiddleName, [Sex] = @Sex WHERE (([DriversLicenseNumber] = @Original_DriversLicenseNumber) AND ([Passport] = @Original_Passport) AND ((@IsNull_Experience = 1 AND [Experience] IS NULL) OR ([Experience] = @Original_Experience)) AND ([PhoneNumber] = @Original_PhoneNumber) AND ([Name] = @Original_Name) AND ([SecondName] = @Original_SecondName) AND ((@IsNull_MiddleName = 1 AND [MiddleName] IS NULL) OR ([MiddleName] = @Original_MiddleName)) AND ([Sex] = @Original_Sex));
 SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName, MiddleName, Sex FROM Drivers WHERE (DriversLicenseNumber = @DriversLicenseNumber)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DriversLicenseNumber", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DriversLicenseNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4109,7 +4201,7 @@ SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DriversLicenseNumber, Passport, Experience, PhoneNumber, Name, SecondName," +
-                " MiddleName, Sex FROM Drivers";
+                " MiddleName, Sex FROM dbo.Drivers";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

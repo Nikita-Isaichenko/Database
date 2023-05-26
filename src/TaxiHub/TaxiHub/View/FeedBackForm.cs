@@ -12,6 +12,7 @@ namespace TaxiHub.View
 {
     public partial class FeedBackForm : Form
     {
+
         public FeedBackForm()
         {
             InitializeComponent();
@@ -22,14 +23,12 @@ namespace TaxiHub.View
             this.Validate();
             this.feedBackBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.taxiCompanyDataSet);
-
         }
 
         private void FeedBackForm_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "taxiCompanyDataSet.FeedBack". При необходимости она может быть перемещена или удалена.
             this.feedBackTableAdapter.Fill(this.taxiCompanyDataSet.FeedBack);
-
         }
     }
 }

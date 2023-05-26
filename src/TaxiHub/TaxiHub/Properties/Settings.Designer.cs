@@ -45,5 +45,7 @@ namespace TaxiHub.Properties {
                 return ((string)(this["TaxiCompanyConnectionString"]));
             }
         }
+
+        public string CafeConnectionString { get; internal set; }
     }
 }
